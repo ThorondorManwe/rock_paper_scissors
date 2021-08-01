@@ -8,6 +8,54 @@
   <script>
     // Your JavaScript goes here!
     
+    // Crea una función que hace una elección aleatoria de 'Rock', 'paper', 'scissor'
+    function computerPlay() {
+      let ele = Math.floor(Math.random() * (4 - 1)) + 1;
+      let elije = "";
+
+      if (ele == 1) {
+        elije = "rock"
+      } else if (ele == 2) {
+        elije = "paper"
+      } else {
+        elije = "scissors"
+      }
+      return elije;
+    }
+
+    //  una función que "juege" una ronda de piedra, papel o tijeras.
+    function playRound(playerSelection, computerSelection) {
+      let input = prompt("Choose, 'rock', 'paper, or 'scissors': ");
+      let resultado = "";
+      //convertir input a minus para que sea case insensitive
+      playerSelection = input.toLowerCase();
+      
+      computerSelection = computerPlay();
+
+      if (playerSelection === computerSelection) {
+        resultado = "Empate";
+      } else if (playerSelection == "rock" && computerSelection == "scissors") {            // Si el player elije rock
+        resultado = "Tú ganas, rock vence a scissors";
+      } else if (playerSelection == "rock" && computerSelection == "paper") {
+        resultado = "Gana el computer, papel le gana a rock";
+      } else if (playerSelection == "paper" && computerSelection == "rock") {               // Si el player elije paper
+        resultado = "Tú ganas, papel vence a rock";
+      } else if (playerSelection == "paper" && computerSelection == "scissors") {
+        resultado = "Pierdes, tijeras vence a papel";
+      } else if (playerSelection == "scissors" && computerSelection == "paper") {           // Si el player elije tijeras
+        resultado = "Tú ganas, tijera vence papel";
+      } else if (playerSelection == "scissors" && computerSelection == "rock") {
+        resultado = "Pierdes, rock vence a tijeras";
+      }
+
+      console.log(playerSelection);
+      console.log(computerSelection);
+      console.log(resultado);
+
+      return resultado;
+    }
+
+    playRound();
   </script>
 </body>
 </html>
