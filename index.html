@@ -7,7 +7,8 @@
 <body>
   <script>
     // Your JavaScript goes here!
-    
+    let jugador = 0;
+    let comp = 0;
     // Crea una función que hace una elección aleatoria de 'Rock', 'paper', 'scissor'
     function computerPlay() {
       let ele = Math.floor(Math.random() * (4 - 1)) + 1;
@@ -36,16 +37,22 @@
         resultado = "Empate";
       } else if (playerSelection == "rock" && computerSelection == "scissors") {            // Si el player elije rock
         resultado = "Tú ganas, rock vence a scissors";
+        jugador += 1;
       } else if (playerSelection == "rock" && computerSelection == "paper") {
         resultado = "Gana el computer, papel le gana a rock";
+        comp += 1;
       } else if (playerSelection == "paper" && computerSelection == "rock") {               // Si el player elije paper
         resultado = "Tú ganas, papel vence a rock";
+        jugador += 1;
       } else if (playerSelection == "paper" && computerSelection == "scissors") {
         resultado = "Pierdes, tijeras vence a papel";
+        comp += 1;
       } else if (playerSelection == "scissors" && computerSelection == "paper") {           // Si el player elije tijeras
         resultado = "Tú ganas, tijera vence papel";
+        jugador += 1;
       } else if (playerSelection == "scissors" && computerSelection == "rock") {
         resultado = "Pierdes, rock vence a tijeras";
+        comp += 1;
       }
 
       console.log(playerSelection);
@@ -55,7 +62,26 @@
       return resultado;
     }
 
-    playRound();
+    // Una función que haga un loop de 5 rondas y tenga el contol del score
+    function game() {
+      for (let i =  1; i < 6; i++) {
+        console.log(i);
+        playRound();
+      }
+
+      if (jugador === comp) {
+        score = "Empate";
+      } else if (jugador > comp) {
+        score = "Gana jugador";
+      } else {
+        score = "Gana computer";
+      }
+
+      console.log(score);
+    }
+
+    
+    game();
   </script>
 </body>
 </html>
